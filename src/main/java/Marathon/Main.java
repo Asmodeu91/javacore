@@ -1,17 +1,32 @@
 package Marathon;
 
+
+import Marathon.animal.*;
+import Marathon.obstacle.Cross;
+import Marathon.obstacle.Obstacle;
+import Marathon.obstacle.Wall;
+import Marathon.obstacle.Water;
+
 public class Main {
     public static void main(String[] args) {
-        Competitor[] competitors = {new Human("Боб"), new Cat("Барсик"), new Dog("Бобик")};
-        Obstacle[] course = {new Cross(80), new Wall(2), new Wall(1), new Cross(120)};
-        for (Competitor c : competitors) {
-            for (Obstacle o : course) {
-                o.doIt(c);
-                if (!c.isOnDistance()) break;
-            }
-        }
-        for (Competitor c : competitors) {
-            c.info();
-        }
+        Animal cat = new Cat("Barsik");
+        Animal dog = new Dog("Bobik");
+        Animal duck = new Duck("Donald");
+        Animal horse = new Horse("Spirit");
+        Animal human = new Human("Bob");
+
+        Obstacle cross = new Cross(15);
+        Obstacle wall = new Wall(0.8f);
+        Obstacle water = new Water(200);
+
+        // Создаем полосу препятствий
+        Course c = new Course(wall, water, cross);
+        // Создаем команду
+        Team team = new Team("bestTeam", human, horse, cat, dog, duck);
+        System.out.println("Team info:");
+        team.printTeamInfo();
+        System.out.println("---");
+        c.doIt(team); // Просим команду пройти полосу
+        team.showResults(); // Показываем результаты
     }
 }
