@@ -32,10 +32,9 @@ public class Main {
         test1(a);
         System.out.println(a);
 
-        StringBuilder stringBuilder = new StringBuilder("Hello");
         String str = "Hello";
-        test2(stringBuilder);
-        System.out.println(stringBuilder.toString());
+        test2(str);
+        System.out.println(str);
 
         int[] mass = {1,2,3};
         test3(mass);
@@ -47,8 +46,8 @@ public class Main {
         a++;
     }
 
-    static void test2(StringBuilder str) {
-        str.append("1");
+    static void test2(String str) {
+        str += "1";
     }
 
     static void test3(int[] mass) {
